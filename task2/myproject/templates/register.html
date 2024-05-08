@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .message h3 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+
+        <form action="" method="post">
+
+            {% csrf_token %}
+
+            <input type="text" name="first_name" placeholder="First Name" required> <br>
+            <input type="text" name="last_name" placeholder="Last Name" required> <br>
+            <input type="text" name="username" placeholder="User Name" required> <br>
+            <input type="email" name="email" placeholder="Email" required> <br>
+            <input type="password" name="password1" placeholder="Password" required> <br>
+            <input type="password" name="password2" placeholder="Confirm Password" required> <br>
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <div class="message">
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
